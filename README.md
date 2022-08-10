@@ -1,5 +1,5 @@
 # TechnicalTask
-UI tests for Photos iOS app
+UI tests of Photos iOS native app
 
 Swift, XCUI, PageObject pattern
 
