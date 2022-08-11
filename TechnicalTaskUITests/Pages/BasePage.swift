@@ -25,25 +25,44 @@ class BasePage: BaseTest {
     // MARK: - Elements
     
     func tapDeleteButton() {
-        deleteButton.tap()
+        step(named: "Tap 'Delete' button") {
+            deleteButton.tap()
+        }
     }
     
     func tapDeletePhotoButton() {
-        deletePhotoButton.tap()
+        step(named: "Tap 'Delete Photo' button") {
+            deletePhotoButton.tap()
+        }
     }
     
     // MARK: - Asserts
     
     func assertDeleteButtonIsDisplayed() {
-        XCTAssert(deleteButton.exists)
+        step(named: "Assert 'Delete' button is diplayed") {
+            XCTAssert(deleteButton.exists)
+        }
     }
     
     func assertDeletePhotoButtonIsDisplayed() {
-        XCTAssert(deletePhotoButton.waitForExistence(timeout: 2))
+        step(named: "Assert 'Delete Photo' button is diplayed") {
+            XCTAssert(deletePhotoButton.waitForExistence(timeout: 2))
+        }
     }
     
     func assertNavBarIsDisplayed() {
-        XCTAssert(navBar.waitForExistence(timeout: 2))
+        step(named: "Assert navigation bar is displayed") {
+            XCTAssert(navBar.waitForExistence(timeout: 2))
+        }
+    }
+}
+
+extension BasePage {
+    
+    func step(named name: String, activity: () -> Void) {
+        XCTContext.runActivity(named: "\(name)") { _ in
+            activity()
+        }
     }
 }
 

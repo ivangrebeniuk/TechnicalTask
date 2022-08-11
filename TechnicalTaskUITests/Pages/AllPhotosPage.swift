@@ -34,23 +34,29 @@ final class AllPhotosPage: BasePage {
     }
     
     func tapFirstImage() {
-        firstImage.tap()
+        step(named: "Tap first image in Collection View") {
+            firstImage.tap()
+        }
     }
     
     // MARK: - Asserts
     
     func assertNavigationBarIsDisplayed() {
-        XCTAssert(screenIdentifier.waitForExistence(timeout: 3), "Navigation 'All Photos' bar is not displayed")
+        step(named: "Check that nav bar is displayed on All Photos screen") {
+            XCTAssert(screenIdentifier.waitForExistence(timeout: 3), "Navigation 'All Photos' bar is not displayed")
+        }
     }
     
     func assertAmountOfPhotosIsReducedByOne(amountOfPhotosBeforeDeleting: Int) {
         let currentAmountOfPhotos =  app.collectionViews.cells.count
-        XCTAssertNotEqual(amountOfPhotosBeforeDeleting, currentAmountOfPhotos,
-                       "Amount of photos is equal, but it should not be. Before: \(amountOfPhotosBeforeDeleting), afterDeleting: \(currentAmountOfPhotos)")
+        step(named: "Assert current amount of photos on All Photos screen is one less then before deleting: '\(amountOfPhotosBeforeDeleting)'") {
+            XCTAssertNotEqual(amountOfPhotosBeforeDeleting, currentAmountOfPhotos)
+        }
     }
     
     func assertDeletedPhotoIsNotDisplayed(_ deletedPhotoLabel: String) {
-        XCTAssertFalse(firstImage.label.contains(deletedPhotoLabel),
-                       "Already deleted image with label '\(deletedPhotoLabel)' is displayed. but it should not be")
+        step(named: "Assert already deleted photo with label '\(deletedPhotoLabel)' is not displayed") {
+            XCTAssertFalse(firstImage.label.contains(deletedPhotoLabel))
+        }
     }
 }

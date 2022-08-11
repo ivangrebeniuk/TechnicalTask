@@ -9,7 +9,7 @@ import XCTest
 
 class TechnicalTaskUITests: BaseTest {
 
-    func testLaunchTheApp() {
+    func testDeletePhotoFlow() {
         let allPhotosPage = AllPhotosPage()
         let imageDetailViewPage = ImageDetailViewPage()
 

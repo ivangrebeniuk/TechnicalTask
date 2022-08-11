@@ -21,14 +21,18 @@ final class ImageDetailViewPage: BasePage {
     // MARK: - Asserts
 
     func tapAllPhotosButton() {
-        allPhotosButton.tap()
+        
+        step(named: "Tap 'All photos' button to return to All Photos screen") {
+            allPhotosButton.tap()
+        }
     }
     
         
     // MARK: - Asserts
     
     func assertAllPhotosButtonIsDisplayed() {
-        XCTAssert(allPhotosButton.waitForExistence(timeout: 2)
-)
+        step(named: "Assert 'All Photos' button is displayed") {
+            XCTAssert(allPhotosButton.waitForExistence(timeout: 2))
+        }
     }
 }
