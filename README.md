@@ -1,6 +1,6 @@
 # TechnicalTask
-UI tests of Photos iOS native app
+UI tests for native iOS Photos application.
 
 Swift, XCUI, PageObject pattern
 
-Please set up English localisation of Xcode simulator before launching tests
+Set up English localisation of Xcode simulator before launching tests
